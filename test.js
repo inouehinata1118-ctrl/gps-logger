@@ -9,6 +9,14 @@ window.addEventListener("load", ()=> {
     // 記録した行をためておく配列（最後にまとめてCSVにする）
     let rows = [];
 
+    // 結果を表示するテキストエリアなどをゲットしておく
+    // （下で最初にlogを呼ぶより前に用意しておく必要がある）
+    let result = {
+        result: document.getElementById("result"),
+        geolocation: document.getElementById("geolocation"),
+        count: document.getElementById("count"),
+    }
+
     /*
     // iPhoneでは加速度・角速度の取得に設定が必要なため、今回は使わない
     // デバイスの方向の検出
@@ -49,13 +57,6 @@ window.addEventListener("load", ()=> {
         let now = new Date().toLocaleString("ja-JP");
         log([now, gpsTime, latitude, longitude, altitude, accuracy, speed, heading]);
     }, 5000);
-
-    // 結果を表示するテキストエリアなどをゲットしておく
-    let result = {
-        result: document.getElementById("result"),
-        geolocation: document.getElementById("geolocation"),
-        count: document.getElementById("count"),
-    }
 
     // 「CSVを保存」ボタンが押されたら、ためた行をファイルにして書き出す
     document.getElementById("save").addEventListener("click", ()=> {
